@@ -14,11 +14,11 @@ spec:
       labels:
         app: simple-webapp
     spec:
-      containers:
-      - name: simple-webapp
-        image: 881490102094.dkr.ecr.ap-southeast-1.amazonaws.com/simple-webapp:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
       imagePullSecrets:
-      - name: ecr-secret
+        - name: ecr-secret  # <<----- This is the important line
+      containers:
+        - name: simple-webapp
+          image: 881490102094.dkr.ecr.ap-southeast-1.amazonaws.com/simple-webapp:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
